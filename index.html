@@ -55,28 +55,47 @@
         }
     </style>
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            // List of banned IP addresses
-            var bannedIPs = ['127.0.0.1', ''];
+window.addEventListener('DOMContentLoaded', (event) => {
+    // List of banned IP addresses
+    var bannedIPs = ['127.0.0.1', '::1', '2001:1b60:2:240:3247::12'];
 
-            // Get the user's IP address
-            var userIP = '';
+    // Get the user's IP address
+    var userIP = '';
 
-            // You can use a free service to get the user's IP address
-            // Here's an example using ipinfo.io
-            fetch('https://ipinfo.io/json')
-                .then(response => response.json())
-                .then(data => {
-                    userIP = data.ip;
+    // You can use a free service to get the user's IP address
+    // Here's an example using ipinfo.io
+    fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            userIP = data.ip;
 
-                    // Check if the user's IP is in the banned list
-                    if (bannedIPs.includes(userIP)) {
-                        // Redirect the user or display a message
-                        window.location.href = 'https://ctksystem.com/banned.html';
-                    }
-                })
-                .catch(error => console.error('Error fetching IP address:', error));
+            // Check if the user's IP is in the banned list
+            if (isIPBanned(userIP, bannedIPs)) {
+                // Redirect the user or display a message
+                window.location.href = 'https://ctksystem.com/banned.html';
+            }
+        })
+        .catch(error => console.error('Error fetching IP address:', error));
+
+    function isIPBanned(ip, bannedList) {
+        // Check if the IP is in the banned list
+        return bannedList.some(bannedIP => {
+            // Check if the banned IP is an IPv6 address
+            if (isIPv6(bannedIP) && isIPv6(ip)) {
+                return bannedIP === ip;
+            } else {
+                // Check if the banned IP is an IPv4 address
+                return bannedIP === ip;
+            }
         });
+    }
+
+    function isIPv6(ip) {
+        // Simple check for IPv6 format
+        return ip.includes(':');
+    }
+});
+
     </script>
 </head>
 <body>
