@@ -6,7 +6,7 @@
     <title>CTK - Main</title>
     <style>
         body {
-            background-color: #87CEEB; /* Sky Blue */
+            background-color: #f0f4f8; /* Light Gray Background */
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -16,37 +16,61 @@
 
         header {
             background-color: #333;
-            padding: 10px 0;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         header a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 20px;
             font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #ff6f61; /* Light Coral */
         }
 
         h1 {
             color: #333;
-            margin-top: 30px;
+            margin-top: 50px;
+            font-size: 2.5em;
         }
 
         h2 {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.5em;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .services {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: left;
+        }
+
+        .service h3 {
+            margin-top: 0;
             color: #333;
-            margin-bottom: 30px;
         }
 
-        form {
-            margin-top: 20px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .service p {
+            color: #666;
         }
 
         iframe {
@@ -56,60 +80,64 @@
     </style>
     <script>
 window.addEventListener('DOMContentLoaded', (event) => {
-    // List of banned IP addresses
     var bannedIPs = ['127.0.0.1', '::1', '2001:1b60:2:240:3247::12', '186.139.115.41'];
-
-    // Get the user's IP address
     var userIP = '';
 
-    // You can use a free service to get the user's IP address
-    // Here's an example using ipinfo.io
     fetch('https://ipinfo.io/json')
         .then(response => response.json())
         .then(data => {
             userIP = data.ip;
-
-            // Check if the user's IP is in the banned list
             if (isIPBanned(userIP, bannedIPs)) {
-                // Redirect the user or display a message
                 window.location.href = 'https://ctksystem.com/banned.html';
             }
         })
         .catch(error => console.error('Error fetching IP address:', error));
 
     function isIPBanned(ip, bannedList) {
-        // Check if the IP is in the banned list
         return bannedList.some(bannedIP => {
-            // Check if the banned IP is an IPv6 address
             if (isIPv6(bannedIP) && isIPv6(ip)) {
                 return bannedIP === ip;
             } else {
-                // Check if the banned IP is an IPv4 address
                 return bannedIP === ip;
             }
         });
     }
 
     function isIPv6(ip) {
-        // Simple check for IPv6 format
         return ip.includes(':');
     }
 });
-
     </script>
 </head>
 <body>
     <header>
         <a href="/faq">FAQ</a>
         <a href="/rules">Rules</a>
+        <a href="/services">Services</a>
         <!-- Add more links as needed -->
     </header>
     <h1>Welcome to the official CTK page!</h1>
     <h2>This page is in early development.</h2>
-    <form action="https://staciksmp.com">
-        <input type="submit" value="Go to the StacikSMP website." />
-    </form>
-    <iframe src="https://discord.com/widget?id=1094928564035526707&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    <div class="container">
+        <iframe src="https://discord.com/widget?id=1094928564035526707&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    </div>
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Service 1</h3>
+                <p>Description of service 1.</p>
+            </div>
+            <div class="service">
+                <h3>Service 2</h3>
+                <p>Description of service 2.</p>
+            </div>
+            <div class="service">
+                <h3>Service 3</h3>
+                <p>Description of service 3.</p>
+            </div>
+        </div>
+    </div>
     <!-- Start of Tawk.to Script -->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -124,53 +152,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
     </script>
     <!-- End of Tawk.to Script -->
     <script>
-  // Initialize the agent on page load.
   const fpPromise = import('https://fpjscdn.net/v3/No1xgx0AHz7jCgM8D5E2')
-    .then(FingerprintJS => FingerprintJS.load({
-      region: "eu"
-    }))
+    .then(FingerprintJS => FingerprintJS.load({ region: "eu" }));
 
-  // Get the visitorId when you need it.
   fpPromise
     .then(fp => fp.get())
     .then(result => {
-      const visitorId = result.visitorId
-      console.log(visitorId)
-    })
+      const visitorId = result.visitorId;
+      console.log(visitorId);
+    });
+    </script>
     <script type="text/javascript">
-	atOptions = {
-		'key' : '4a3d9166cd8c80827b8614cb8f601d1b',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.topcreativeformat.com/4a3d9166cd8c80827b8614cb8f601d1b/invoke.js"></script>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'ae99b7dd372c31e7541827da87ec3930',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.topcreativeformat.com/ae99b7dd372c31e7541827da87ec3930/invoke.js"></script>
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'fb09ca9bb510c32bf3c428e7084f97e3',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.topcreativeformat.com/fb09ca9bb510c32bf3c428e7084f97e3/invoke.js"></script>
-
-</script>
+        atOptions = {
+            'key' : '4a3d9166cd8c80827b8614cb8f601d1b',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.topcreativeformat.com/4a3d9166cd8c80827b8614cb8f601d1b/invoke.js"></script>
+    <script type="text/javascript">
+        atOptions = {
+            'key' : 'ae99b7dd372c31e7541827da87ec3930',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.topcreativeformat.com/ae99b7dd372c31e7541827da87ec3930/invoke.js"></script>
+    <script type="text/javascript">
+        atOptions = {
+            'key' : 'fb09ca9bb510c32bf3c428e7084f97e3',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//www.topcreativeformat.com/fb09ca9bb510c32bf3c428e7084f97e3/invoke.js"></script>
 </body>
 </html>
-
