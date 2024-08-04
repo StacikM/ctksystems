@@ -43,7 +43,7 @@
             margin: 10px 0;
         }
 
-        .donate-button {
+        .button {
             display: inline-block;
             background-color: #4CAF50;
             color: white;
@@ -54,10 +54,20 @@
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
 
-        .donate-button:hover {
+        .button:hover {
             background-color: #45a049;
+        }
+
+        .coming-soon {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            background-color: #c0c0c0;
         }
     </style>
 </head>
@@ -67,7 +77,15 @@
     <div class="service">
         <h2>Donate to CTK</h2>
         <p>Support our mission and help us continue providing valuable services by donating.</p>
-        <a href="https://buy.stripe.com/test_6tUdTq9J82wfaK44gg" class="donate-button">Donate Now</a>
+        <a href="https://buy.stripe.com/test_6tUdTq9J82wfaK44gg" class="button">Donate Now</a>
+    </div>
+
+    <div class="service">
+        <h2>Additional Services</h2>
+        <p>Stay tuned for exciting new features and services that will enhance your experience.</p>
+        <button class="button coming-soon" disabled>Coming Soon</button>
+        <button class="button coming-soon" disabled>Coming Soon</button>
     </div>
 </body>
 </html>
+
