@@ -107,37 +107,6 @@
             margin-top: 30px;
         }
     </style>
-    <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            var bannedIPs = ['127.0.0.1', '::1', '2001:1b60:2:240:3247::12', '186.139.115.41'];
-            var userIP = '';
-
-            fetch('https://ipinfo.io/json')
-                .then(response => response.json())
-                .then(data => {
-                    userIP = data.ip;
-
-                    if (isIPBanned(userIP, bannedIPs)) {
-                        window.location.href = 'https://ctksystem.com/banned.html';
-                    }
-                })
-                .catch(error => console.error('Error fetching IP address:', error));
-
-            function isIPBanned(ip, bannedList) {
-                return bannedList.some(bannedIP => {
-                    if (isIPv6(bannedIP) && isIPv6(ip)) {
-                        return bannedIP === ip;
-                    } else {
-                        return bannedIP === ip;
-                    }
-                });
-            }
-
-            function isIPv6(ip) {
-                return ip.includes(':');
-            }
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -153,12 +122,16 @@
         <h1>Welcome to the Official CTK Page!</h1>
         <h2>Your trusted system for Discord server management</h2>
 
-        <div class="service">
-            <h2>Upcoming Features</h2>
-            <p>We're constantly working to bring new and exciting services to enhance your experience. Stay tuned for more updates!</p>
-            <button class="button" disabled>Coming Soon</button>
-            <button class="button" disabled>Coming Soon</button>
-        </div>
+       <section id="services">
+    <h2>Our Services</h2>
+    <p>Explore how CTK Systems can assist your automation needs.</p>
+    <a 
+      href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Bot%20requested&body=CTK%20customer%20requested%20bot.%20Customer%20from%20(country)%0ADO%20NOT%20TYPE%20OR%20MODIFY%20ABOVE%20THE%20LINE%0A-----------------------------------------------------------------------------------" 
+      style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+      Talk to a Specialist
+    </a>
+</section>
+
 
         <iframe src="https://discord.com/widget?id=1094928564035526707&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     </div>
