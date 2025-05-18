@@ -1,123 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CTK - Services</title>
 
   <!-- Google AdSense Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4663443461877875" crossorigin="anonymous"></script>
 
   <style>
-    body {
-      background-color: #f4f7fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      color: #333;
     }
 
-    header {
-      background-color: #2c3e50;
-      padding: 20px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000000, #6a0dad);
       color: white;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
       text-align: center;
     }
 
-    main {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1000px;
     }
 
-    h1, h2 {
-      color: #2c3e50;
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .service {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-      padding: 25px;
-      margin-bottom: 30px;
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
     }
 
-    .service p {
-      margin: 12px 0;
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #fff;
     }
 
-    .button {
-      display: inline-block;
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 15px;
-      transition: background-color 0.3s ease;
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ddd;
     }
 
-    .button:hover {
-      background-color: #45a049;
-    }
-
-    .button.secondary {
-      background-color: #0070ba;
-    }
-
-    .button.secondary:hover {
-      background-color: #005f99;
-    }
-
-    .email-button {
-      background-color: #007bff;
-      margin-top: 10px;
-    }
-
-    .email-button:hover {
-      background-color: #0056b3;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
-      margin-top: 40px;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
+
 <body>
-
-<header>
   <h1>Our Services</h1>
-</header>
-
-<main>
-  <div class="service">
-    <h2>Support CTK</h2>
-    <p>We appreciate your support. Choose a method to donate and help us grow our mission.</p>
-    <a href="https://donate.stripe.com/5kAaIq5ZIccyb6w288" class="button">Donate with Stripe</a>
-    <a href="https://www.paypal.com/donate/?hosted_button_id=2ECPQLB3VQJJ6" class="button secondary">Donate with PayPal</a>
+  <div class="services">
+    <div class="card">
+      <h2>Moderation Bots</h2>
+      <p>Keep your Discord server clean and under control with powerful CTK moderation bots and automated actions.</p>
+    </div>
+    <div class="card">
+      <h2>Game Integration</h2>
+      <p>Seamless Discord-based features for GD.games or Firebase-powered games, giving players connected experiences.</p>
+    </div>
+    <div class="card">
+      <h2>Blacklist Enforcement</h2>
+      <p>We maintain CTK-wide blacklists for abusive users, ensuring safety across all partnered services and servers.</p>
+    </div>
+    <div class="card">
+      <h2>Support System</h2>
+      <p>Dedicated support with ticketing systems and quick admin responses to resolve any issues or questions.</p>
+    </div>
+    <div class="card">
+      <h2>Community Management</h2>
+      <p>We help you organize and grow your community with structured roles, announcements, and staff tools.</p>
+    </div>
   </div>
-
-  <div class="service">
-    <h2>Service Options</h2>
-    <p>Looking for automation? Contact our specialist to discuss your needs.</p>
-    <a 
-      href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Bot%20requested&body=CTK%20customer%20requested%20bot.%20Customer%20from%20%0ADO%20NOT%20TYPE%20OR%20MODIFY%20ABOVE%20THE%20LINE%0A-----------------------------------------------------------------------------------" 
-      class="button email-button">
-      Talk to a Specialist
-    </a>
-  </div>
-</main>
-
-<footer>
-  &copy; 2025 CTK Systems. All rights reserved.
-</footer>
-
 </body>
+
 </html>
