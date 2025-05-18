@@ -2,122 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CTK - Services</title>
-
-  <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4663443461877875" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      background-color: #f4f7fa;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --primary: #2c3e50;
+      --accent: #f39c12;
+      --bg: #f4f7fa;
+      --text: #333;
+    }
+
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      color: #333;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #2c3e50;
-      padding: 20px;
-      color: white;
+      background: var(--primary);
+      padding: 15px 0;
       text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    main {
-      padding: 30px 20px;
+    header a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    header a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+    }
+
+    .hero h2 {
+      font-weight: 400;
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 40px 20px;
       max-width: 900px;
       margin: auto;
     }
 
-    h1, h2 {
-      color: #2c3e50;
-    }
-
-    .service {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    .service-card {
+      background: #fff;
       padding: 25px;
-      margin-bottom: 30px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
     }
 
-    .service p {
-      margin: 12px 0;
+    .service-card:hover {
+      transform: translateY(-5px);
     }
 
-    .button {
+    .cta-button {
       display: inline-block;
-      background-color: #4CAF50;
+      background: #007bff;
       color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
-      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 5px;
       margin-top: 15px;
-      transition: background-color 0.3s ease;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
 
-    .button:hover {
-      background-color: #45a049;
+    .cta-button:hover {
+      background: #0056b3;
     }
 
-    .button.secondary {
-      background-color: #0070ba;
-    }
-
-    .button.secondary:hover {
-      background-color: #005f99;
-    }
-
-    .email-button {
-      background-color: #007bff;
-      margin-top: 10px;
-    }
-
-    .email-button:hover {
-      background-color: #0056b3;
+    iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 500px;
+      margin: 40px auto;
+      display: block;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     footer {
+      background: var(--primary);
+      color: #fff;
       text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
+      padding: 20px 0;
       margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Our Services</h1>
-</header>
+  <header>
+    <a href="/faq">FAQ</a>
+    <a href="/rules">Rules</a>
+    <a href="/services.html">Services</a>
+  </header>
 
-<main>
-  <div class="service">
-    <h2>Support CTK</h2>
-    <p>We appreciate your support. Choose a method to donate and help us grow our mission.</p>
-    <a href="https://donate.stripe.com/5kAaIq5ZIccyb6w288" class="button">Donate with Stripe</a>
-    <a href="https://www.paypal.com/donate/?hosted_button_id=2ECPQLB3VQJJ6" class="button secondary">Donate with PayPal</a>
-  </div>
+  <section class="hero">
+    <h1>Welcome to CTK Systems</h1>
+    <h2>Your trusted solution for Discord server automation</h2>
+  </section>
 
-  <div class="service">
-    <h2>Service Options</h2>
-    <p>Looking for automation? Contact our specialist to discuss your needs.</p>
-    <a 
-      href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Bot%20requested&body=CTK%20customer%20requested%20bot.%20Customer%20from%20%0ADO%20NOT%20TYPE%20OR%20MODIFY%20ABOVE%20THE%20LINE%0A-----------------------------------------------------------------------------------" 
-      class="button email-button">
-      Talk to a Specialist
-    </a>
-  </div>
-</main>
+  <section class="section">
+    <div class="service-card">
+      <h2>What We Do</h2>
+      <p>We provide cutting-edge automation tools and management bots to power your Discord communities with ease.</p>
+      <a href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Bot%20requested" class="cta-button">Talk to a Specialist</a>
+    </div>
 
-<footer>
-  &copy; 2025 CTK Systems. All rights reserved.
-</footer>
+    <div class="service-card">
+      <h2>Join Our Discord</h2>
+      <iframe src="https://discord.com/widget?id=1094928564035526707&theme=dark" allowtransparency="true" sandbox="allow-popups allow-same-origin allow-scripts"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CTK System. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
