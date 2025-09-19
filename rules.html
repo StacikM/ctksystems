@@ -6,39 +6,100 @@
   <title>CTK - Rules</title>
   <style>
     body {
-      background: linear-gradient(135deg, #000000, #6c5ce7);
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #4b0082, #6c5ce7);
+      background-size: 300% 300%;
+      animation: gradientBG 12s ease infinite;
       color: #fff;
-      padding: 20px;
       text-align: center;
     }
-    h1, h2 { color: #fff; }
-    ol {
-      text-align: left;
-      max-width: 800px;
-      margin: 0 auto 20px;
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    li { margin-bottom: 10px; color: #ddd; }
-    p { color: #ccc; }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 30px 0;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .card {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    p {
+      color: #ccc;
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
   <h1>Welcome to CTK Terms of Service</h1>
-  <ol>
-    <li>Be respectful; no harassment or hate speech.</li>
-    <li>Follow our Terms of Service.</li>
-    <li>Know the rules to avoid consequences.</li>
-    <li>Violations will lead to fair actions.</li>
-    <li>No stealing or project disruption.</li>
-    <li>Use support properly, no abuse.</li>
-    <li>Avoid drama or you risk punishment.</li>
-    <li>Blacklists are final and cannot be appealed.</li>
-  </ol>
-  <p>We may update rules without notice. Stay informed!</p>
+
+  <div class="card">
+    <h2>Rules</h2>
+    <ol>
+      <li>Be respectful; no harassment or hate speech.</li>
+      <li>Follow our Terms of Service.</li>
+      <li>Know the rules to avoid consequences.</li>
+      <li>Violations will lead to fair actions.</li>
+      <li>No stealing or project disruption.</li>
+      <li>Use support properly, no abuse.</li>
+      <li>Avoid drama or you risk punishment.</li>
+      <li>Blacklists are final and cannot be appealed.</li>
+    </ol>
+    <p>We may update rules without notice. Stay informed!</p>
+  </div>
+
+  <div class="card">
+    <h2>Punishment System</h2>
+    <p><em>Usually rule violations get this pattern of punishments: Warning (2 warnings before next punishment) -> Remove of features (If used) -> Ban from our projects (not partner's) -> CTK Blacklist (usually for big rule violations)</em></p>
+  </div>
+
   <h2>Thank you for keeping CTK a respectful place!</h2>
+
+  <footer>© 2025 CTK Community. All rights reserved.</footer>
 </body>
 </html>
