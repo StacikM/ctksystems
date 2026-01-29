@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTK Dev - Developer Policies</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #4b0082, #6c5ce7);
+      background-size: 300% 300%;
+      animation: gradientBG 12s ease infinite;
+      color: #fff;
+      text-align: center;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 30px 0;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .card {
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      text-align: left;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    p {
+      color: #ccc;
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>CTK Developer Policies</h1>
+
+<div class="card">
+  <h2>Introduction</h2>
+  <p>
+    These Developer Policies ("Policies") govern how CTK SDKs, libraries, APIs, and developer tools may be used.
+    By integrating, distributing, or executing any CTK-provided code, you agree to comply with these Policies.
+  </p>
+
+  <p><strong>DEFINITIONS:</strong><br>
+    <strong>CTK SDK / Libraries</strong> = Any official CTK-distributed code, binaries, APIs, or tooling.<br>
+    <strong>Developer Content</strong> = Any application, service, or project that uses CTK SDKs or libraries.<br>
+    <strong>Enforcement Code</strong> = Logic executed by CTK systems that restricts or disables access based on policy violations.<br>
+    <strong>CTK Blacklist</strong> = A permanent or temporary restriction applied to users, accounts, IPs, or environments.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Section A: Acceptable SDK & Library Usage</h2>
+  <ol>
+    <li>
+      <strong>Authorized Use Only:</strong>
+      CTK SDKs and libraries may only be used in accordance with their documented purpose. Reverse engineering,
+      deobfuscation, or bypassing built-in safeguards is prohibited.<br>
+      <em>ENFORCEMENT:</em> Immediate revocation of SDK access and CTK Blacklist.
+    </li>
+
+    <li>
+      <strong>No Repackaging or Redistribution:</strong>
+      You may not repackage, resell, sublicense, or redistribute CTK SDKs or libraries without explicit written authorization.<br>
+      <em>ENFORCEMENT:</em> Permanent CTK Blacklist and potential legal action.
+    </li>
+
+    <li>
+      <strong>Content Responsibility:</strong>
+      Developers are solely responsible for the content and behavior of applications built using CTK tools.
+      CTK may restrict or disable SDK functionality if used to distribute harmful, abusive, or illegal content.<br>
+      <em>ENFORCEMENT:</em> Feature restriction or full SDK disablement.
+    </li>
+
+    <li>
+      <strong>Security & Integrity:</strong>
+      Attempts to interfere with CTK infrastructure, authentication systems, telemetry, or enforcement mechanisms
+      are strictly prohibited.<br>
+      <em>ENFORCEMENT:</em> Automatic enforcement triggers, IP blocking, and CTK Blacklist.
+    </li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Section B: Blacklisting & Runtime Enforcement</h2>
+  <ol>
+    <li>
+      <strong>Execution-Level Restrictions:</strong>
+      CTK reserves the right to execute server-side or client-side enforcement code that may limit,
+      disable, or fully block functionality for blacklisted users or environments.
+    </li>
+
+    <li>
+      <strong>No Circumvention:</strong>
+      Any attempt to bypass CTK enforcement logic, blacklist checks, license validation,
+      or access controls will be treated as a severe violation.<br>
+      <em>ENFORCEMENT:</em> Permanent CTK Blacklist.
+    </li>
+
+    <li>
+      <strong>Propagation of Restrictions:</strong>
+      Blacklist status may apply across all CTK services, SDKs, libraries, and partner integrations.
+      Enforcement may occur automatically without prior notice.
+    </li>
+
+    <li>
+      <strong>Finality:</strong>
+      Blacklist decisions are generally final. CTK is not obligated to provide appeals,
+      explanations, or reinstatement.
+    </li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Section C: Developer & Administrative Misconduct</h2>
+  <ol>
+    <li>
+      <strong>Abuse of Privileged Access:</strong>
+      Developers or administrators with elevated access may not misuse credentials,
+      keys, or permissions to alter CTK systems or harm other developers.<br>
+      <em>ENFORCEMENT:</em> Immediate access revocation, CTK Blacklist, and potential legal action.
+    </li>
+
+    <li>
+      <strong>Intentional System Damage:</strong>
+      Any deliberate attempt to disrupt, degrade, or destroy CTK services or SDK functionality
+      will be treated as a critical violation.<br>
+      <em>ENFORCEMENT:</em> Permanent CTK Blacklist and possible civil or criminal escalation.
+    </li>
+  </ol>
+</div>
+
+<div class="card">
+  <h2>Section D: Telemetry, Monitoring & Privacy</h2>
+  <p>
+    CTK SDKs may collect limited telemetry required for security, enforcement, and stability purposes.
+    Use of CTK tools constitutes consent to this monitoring as outlined in our Privacy Policy.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Section E: Policy Updates</h2>
+  <p>
+    CTK may update these Developer Policies at any time. Continued use of CTK SDKs or libraries
+    after an update constitutes acceptance of the revised Policies.
+  </p>
+</div>
+
+<h2>Build responsibly. Abuse nothing.</h2>
+
+<footer>
+  © 2025 CTK. All rights reserved. | Last Updated: 29 January 2026
+</footer>
+
+</body>
+</html>
