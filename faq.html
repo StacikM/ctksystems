@@ -1,56 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CTK - FAQ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK Systems — FAQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      background: linear-gradient(135deg, #000000, #6c5ce7);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      margin: 0;
-      padding: 20px;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
     }
-    h1, h2 { text-align: center; color: #ffffff; }
-    .faq-section {
-      background: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 800px;
-      margin: 20px auto;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    nav a.active { color: var(--text); }
+
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 420px; margin: 14px auto 0; line-height: 1.65; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 32px; }
+
+    .faq-group-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: rgba(124,111,255,0.25); }
+
+    .faq-q { width: 100%; background: none; border: none; cursor: pointer; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: left; }
+    .faq-q span { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .faq-chevron { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: transform 0.25s, border-color 0.2s; }
+    .faq-chevron svg { display: block; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); border-color: var(--purple); }
+
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-a-inner { padding: 0 24px 20px; font-size: 14px; color: var(--text-muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 16px; margin: 0 24px; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a-inner a { color: var(--purple); text-decoration: none; }
+    .faq-a-inner a:hover { text-decoration: underline; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
-    .question { font-weight: bold; margin-top: 15px; }
-    .answer { margin-bottom: 10px; color: #ddd; }
-    a { color: #a29bfe; text-decoration: none; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <h1>Frequently Asked Questions (FAQ)</h1>
-  <section class="faq-section">
-    <h2>General Questions:</h2>
-    <div class="question">Q1: What is CTK?</div>
-    <div class="answer">A1: CTK is an service where we build anything you want, such as python apps, discord bots, and more.</div>
-    <div class="question">Q2: What is a CTK blacklist?</div>
-    <div class="answer">A2: A CTK blacklist is the worst punishment you can get from CTK. You will not be able to participate in any CTK projects or use them. You will be immediately banned from projects you are already registered to</div>
-    <div class="question">Q3: What does CTK stand for?</div>
-    <div class="answer">A3: CTK stands for CTaciK.</div>
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq" class="active">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">Help</div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Quick answers to the most common questions about CTK.</p>
   </section>
 
-  <section class="faq-section">
-    <h2>Important Answers:</h2>
-    <div class="question">Q1: Why did a CTK bot DM me about feature removal?</div>
-    <div class="answer">A1: If you violate our <a href="https://ctksystem.com/rules">rules</a>, features can be removed...</div>
-    <div class="question">Q2: Do CTK admins have admin commands?</div>
-    <div class="answer">A2: CTK admins can use ALL CTK bot commands (even admin commands), but don’t have full admin rights on your server.</div>
-  </section>
+  <div class="content">
+
+    <div>
+      <div class="faq-group-label">General</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            <span>What is CTK?</span>
+            <div class="faq-chevron"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#888899" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">CTK is a service where we build whatever you need — Python applications, Discord bots, game integrations, and more.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            <span>What does CTK stand for?</span>
+            <div class="faq-chevron"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#888899" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">CTK stands for CTaciK.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            <span>What is a CTK Blacklist?</span>
+            <div class="faq-chevron"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#888899" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">A CTK Blacklist is the most severe punishment. You will lose access to all CTK projects and will be immediately removed from any you are currently registered in.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="faq-group-label">Important Answers</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            <span>Why did a CTK bot DM me about feature removal?</span>
+            <div class="faq-chevron"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#888899" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">If you violate our <a href="https://ctksystem.com/rules">rules</a>, features can be removed from your account as a form of punishment.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            <span>Do CTK admins have admin commands on my server?</span>
+            <div class="faq-chevron"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="#888899" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">CTK admins can use all CTK bot commands (including admin-level bot commands), but they do not have full server admin rights on your Discord server.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>&copy; 2025 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
+
+  <script>
+    function toggle(btn) {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
