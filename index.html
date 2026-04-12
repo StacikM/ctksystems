@@ -3,163 +3,440 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTK - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>CTK Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --purple: #7c6fff;
+      --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124, 111, 255, 0.15);
+      --bg: #09090f;
+      --bg-card: #0f0f1a;
+      --bg-card2: #13131f;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124, 111, 255, 0.35);
+      --text: #f0eefc;
+      --text-muted: #888899;
+      --text-dim: #555566;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #000000, #6c5ce7);
-      color: white;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* ── NAV ── */
     header {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      padding: 15px 0;
-      text-align: center;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 9, 15, 0.85);
+      backdrop-filter: blur(20px);
     }
 
-    header a {
-      color: #fff;
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    header a:hover {
-      color: #a29bfe;
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      background: var(--purple);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
     }
 
+    nav { display: flex; gap: 4px; }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ── HERO ── */
     .hero {
+      padding: 120px 40px 100px;
       text-align: center;
-      padding: 80px 20px 40px;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(124,111,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border-accent);
+      background: rgba(124,111,255,0.08);
+      color: #a89fff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
     }
 
     .hero h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero h2 {
-      font-weight: 400;
-      color: #ccc;
+    .hero p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 40px;
     }
 
-    .section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    .hero-actions {
       display: flex;
-      flex-direction: column;
-      gap: 40px;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .glass-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .glass-card h2 {
-      margin-bottom: 15px;
-      color: #fff;
-    }
-
-    .glass-card p {
-      color: #ddd;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: #6c5ce7;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
       color: white;
       padding: 12px 24px;
-      border-radius: 8px;
-      margin-top: 15px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: #5e50d6;
-    }
-
-    iframe {
-      width: 100%;
-      max-width: 400px;
-      height: 500px;
-      border: none;
       border-radius: 10px;
-      margin: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
     }
 
-    footer {
-      background: rgba(0, 0, 0, 0.4);
+    .btn-primary:hover {
+      background: var(--purple-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-1px);
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 80px 40px;
+      max-width: 1060px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.6;
+      margin-bottom: 52px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--purple-glow);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 40px 40px 100px;
+      max-width: 1060px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .cta-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 56px 48px;
       text-align: center;
-      padding: 20px 0;
-      color: #ccc;
-      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card-glow {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+    }
+
+    .cta-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .trustpilot-wrapper {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer span {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    footer nav { gap: 0; }
+
+    footer nav a {
+      font-size: 13px;
+      padding: 4px 10px;
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .hero { padding: 80px 20px 60px; }
+      .features, .cta-section { padding-left: 20px; padding-right: 20px; }
+      .cta-card { padding: 36px 24px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="/faq">FAQ</a>
-    <a href="/rules">Rules</a>
-    <a href="/services.html">Services</a>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <h1>CTK Systems</h1>
-    <h2>Automation, Software, and Server Solutions</h2>
-  </section>
-
-  <section class="section">
-    <div class="glass-card">
-      <h2>What We Do</h2>
-      <p>
-        CTK Systems provides advanced automation bots and server management tools for Discord communities. 
-        We also specialize in custom Python-based software solutions tailored to your project goals.
-      </p>
-      <a href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Project%20requested" class="cta-button">Request A Project</a>
-      
-      <!-- TrustBox widget - Review Collector -->
-      <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="688bcaf47ad4ab422b12aba7" data-style-height="52px" data-style-width="100%">
-        <a href="https://www.trustpilot.com/review/ctksystem.com" target="_blank" rel="noopener">Trustpilot</a>
+  <main>
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="badge"><span class="badge-dot"></span>Discord &amp; Software Solutions</div>
+      <h1>Build Smarter.<br>Automate Everything.</h1>
+      <p>Advanced bots, custom Python software, and server management tools — built for teams who demand reliability.</p>
+      <div class="hero-actions">
+        <a href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Project%20requested" class="btn-primary">
+          Request a Project
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/services.html" class="btn-secondary">View Services</a>
       </div>
-      <!-- End TrustBox widget -->
-    </div>
+    </section>
 
-  </section>
+    <section class="features">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Everything your server needs</h2>
+      <p class="section-sub">From automation bots to fully custom software — we build tools that work the way you do.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Discord Automation</h3>
+          <p>Powerful bots that handle moderation, ticketing, roles, and community workflows — so you don't have to.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠</div>
+          <h3>Custom Python Software</h3>
+          <p>Tailored Python solutions for your specific project goals. Scalable, clean, and built to last.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖥</div>
+          <h3>Server Management</h3>
+          <p>Professional server setup, configuration, and ongoing support to keep your community running smoothly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-card">
+        <div class="cta-card-glow"></div>
+        <h2>Ready to get started?</h2>
+        <p>Tell us about your project and we'll get back to you within 24 hours.</p>
+        <a href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Project%20requested" class="btn-primary">
+          Get in Touch
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="trustpilot-wrapper">
+          <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="688bcaf47ad4ab422b12aba7" data-style-height="52px" data-style-width="100%">
+            <a href="https://www.trustpilot.com/review/ctksystem.com" target="_blank" rel="noopener">Trustpilot</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 CTK System. All rights reserved.
+    <span>&copy; 2023-2026 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
   </footer>
 
 </body>
