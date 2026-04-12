@@ -1,108 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTK - Services</title>
-
-  <!-- Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4663443461877875" crossorigin="anonymous"></script>
-
+  <title>CTK Systems — Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124,111,255,0.15);
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
     }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    nav a.active { color: var(--text); }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #000000, #6a0dad);
-      color: white;
-      padding: 40px 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -1.2px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 440px; margin: 14px auto 0; line-height: 1.65; }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 40px;
-      text-align: center;
-    }
+    .services-grid { max-width: 1040px; margin: 0 auto; padding: 20px 40px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; flex: 1; }
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      width: 100%;
-      max-width: 1000px;
-    }
+    .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; gap: 12px; }
+    .service-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+    .service-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--purple-glow); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .service-card h2 { font-size: 15px; font-weight: 600; color: var(--text); }
+    .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+    .service-tag { display: inline-block; margin-top: auto; padding-top: 12px; font-size: 11px; font-weight: 600; color: #a89fff; letter-spacing: 0.5px; text-transform: uppercase; }
 
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .pricing-strip { max-width: 1040px; margin: 0 auto 60px; padding: 0 40px; }
+    .pricing-inner { background: #0f0f1a; border: 1px solid var(--border-accent); border-radius: 16px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .pricing-inner h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .pricing-inner p { font-size: 14px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--purple); color: white; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: 600; white-space: nowrap; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--purple-dark); transform: translateY(-1px); }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: #fff;
-    }
-
-    .card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #ddd;
-    }
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .services-grid { padding: 16px 20px 60px; }
+      .pricing-strip { padding: 0 20px; }
+      .pricing-inner { padding: 28px 24px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
-
 <body>
-  <h1>Our Services</h1>
-  <div class="services">
-    <div class="card">
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html" class="active">Services</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">What We Build</div>
+    <h1>Our Services</h1>
+    <p>From Discord moderation to custom software — everything built fast, clean, and for under 100€.</p>
+  </section>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
       <h2>Moderation Bots</h2>
-      <p>Keep your Discord server clean and under control with powerful CTK moderation bots and automated actions.</p>
+      <p>Keep your Discord server clean with powerful automated moderation, logging, and action tools.</p>
+      <span class="service-tag">Discord</span>
     </div>
-    <div class="card">
+    <div class="service-card">
+      <div class="service-icon">🎮</div>
       <h2>Game Integration</h2>
       <p>Seamless Discord-based features for GD.games or Firebase-powered games, giving players connected experiences.</p>
+      <span class="service-tag">Discord · Firebase</span>
     </div>
-    <div class="card">
+    <div class="service-card">
+      <div class="service-icon">🚫</div>
       <h2>Blacklist Enforcement</h2>
-      <p>We maintain CTK-wide blacklists for abusive users, ensuring safety across all partnered services and servers.</p>
+      <p>CTK-wide blacklist system for abusive users, ensuring safety across all partnered services and servers.</p>
+      <span class="service-tag">Security</span>
     </div>
-    <div class="card">
+    <div class="service-card">
+      <div class="service-icon">🎫</div>
       <h2>Support System</h2>
-      <p>Dedicated support with ticketing systems and quick admin responses to resolve any issues or questions.</p>
+      <p>Dedicated ticketing system with fast admin response times to resolve any issues or questions efficiently.</p>
+      <span class="service-tag">Community</span>
     </div>
-    <div class="card">
+    <div class="service-card">
+      <div class="service-icon">👥</div>
       <h2>Community Management</h2>
-      <p>We help you organize and grow your community with structured roles, announcements, and staff tools.</p>
+      <p>Structured roles, announcements, and staff tools to help you organize and grow your community.</p>
+      <span class="service-tag">Discord</span>
     </div>
-    <div class="card">
-      <h2>Fast and Cheap</h2>
-      <p>We deliver products very fast to you, and we do it usually for under 100€</p>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h2>(unavailable) Custom Python Software</h2>
+      <p>Bespoke Python applications tailored exactly to your project requirements — delivered quickly.</p>
+      <span class="service-tag">Software</span>
+    </div>
   </div>
-</body>
 
+  <div class="pricing-strip">
+    <div class="pricing-inner">
+      <div>
+        <h3>Fast delivery.</h3>
+        <p>Most projects are delivered quickly and priced affordably. Tell us what you need.</p>
+      </div>
+      <a href="mailto:stacik@ctksystem.com?subject=CTK%20AUTOMATED:%20Project%20requested" class="btn-primary">
+        Request a Project (email stacik@ctksystem.com)
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>&copy; 2023-2026 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
+</body>
 </html>
