@@ -1,69 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - CTK</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK Systems — Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      background: linear-gradient(135deg, #000000, #6c5ce7);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      padding: 20px;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
     }
-    h1, h2 { color: #fff; }
-    ul { margin-left: 20px; color: #ccc; }
-    p { color: #ccc; }
-    a { color: #a29bfe; text-decoration: none; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 14px; color: var(--text-dim); max-width: 400px; margin: 12px auto 0; }
+
+    .content { max-width: 820px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(124,111,255,0.2); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .card li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .card li strong { color: var(--text); font-weight: 600; }
+    .card a { color: var(--purple); text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    .data-table th { font-size: 11px; font-weight: 600; color: var(--text-dim); letter-spacing: 0.8px; text-transform: uppercase; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+    .data-table td { font-size: 13px; color: var(--text-muted); padding: 10px 12px; border-bottom: 1px solid var(--border); line-height: 1.5; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { color: var(--text); font-weight: 500; width: 160px; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      .card { padding: 22px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy for CTK</h1>
-  <p><strong>Effective Date:</strong> 21.10.25</p>
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </header>
 
-  <h2>1. Introduction</h2>
-  <p>We value your privacy and explain how we handle your data.</p>
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Effective: 21 October 2025 · Last updated: 21 October 2025</p>
+  </section>
 
-  <h2>2. Information We Collect</h2>
-  <ul>
-    <li><strong>IP Addresses:</strong> Used for security only.</li>
-    <li><strong>Usernames and User IDs:</strong> For identity in our systems (via Firebase, GD.games).</li>
-  </ul>
+  <div class="content">
 
-  <h2>3. How We Use Your Information</h2>
-  <ul>
-    <li>Security enforcement and identification within CTK services.</li>
-  </ul>
+    <div class="card">
+      <div class="card-label">1. Introduction</div>
+      <p>We value your privacy. This policy explains how CTK collects, uses, and protects your data when you use our services.</p>
+    </div>
 
-  <h2>4. Storage and Security</h2>
-  <p>We store data securely using Firebase with strong protections in place.</p>
+    <div class="card">
+      <div class="card-label">2. Information We Collect</div>
+      <table class="data-table">
+        <thead>
+          <tr><th>Data Type</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>IP Addresses</td><td>Used for security enforcement only</td></tr>
+          <tr><td>Usernames & User IDs</td><td>Identity management within CTK systems via Firebase / GD.games</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <h2>5. Sharing</h2>
-  <ul>
-    <li>We do not sell your data.</li>
-    <li>Shared only if required by law or for protection purposes.</li>
-    <li>We share limited info with Google Ads. (if the project contains Google Ads)</li>
-  </ul>
+    <div class="card">
+      <div class="card-label">3. How We Use Your Information</div>
+      <p>Data is used solely for security enforcement and identity management within CTK services.</p>
+    </div>
 
-  <h2>6. Your Rights</h2>
-  <ul>
-    <li>Access, correction, deletion (except punishments), objection rights available.</li>
-  </ul>
-  <p>Contact us at <a href="mailto:stacik@ctksystem.com">stacik@ctksystem.com</a></p>
+    <div class="card">
+      <div class="card-label">4. Storage & Security</div>
+      <p>All data is stored securely using Firebase with strong access controls and protections in place.</p>
+    </div>
 
-  <h2>7. Changes</h2>
-  <p>We may update this Privacy Policy and will post changes here.</p>
-  <p>Original privacy policy posted 01.09.2024</p>
-  <p>Latest change: 21.10.2025</p>
+    <div class="card">
+      <div class="card-label">5. Data Sharing</div>
+      <ul>
+        <li>We <strong>do not sell</strong> your data.</li>
+        <li>Data is shared only if required by law or for user protection purposes.</li>
+        <li>Limited information may be shared with Google Ads if a project includes advertising.</li>
+      </ul>
+    </div>
 
-  <h2>8.Punishments data</h2>
-  <p>If you get a punishment, it will not get deleted off our system except if it is a false punishment.</p>
-  <p>Data stored in a CTK Blacklist: your IP, your discord username (if discord case), your email (if registered), reason of punishment, date of punishment, moderator</p>
-  <p>For security reasons, this data cannot be requested to be deleted.</p>
-  <p>Data stored in a feature ban: your discord username, feature removed, reason of punishment, date of punishment, moderator, pID</p>
-  <p>This will be deleted if you decide to delete your data, if you try to bypass the punishment using this, you will be CTK blacklisted</p>
+    <div class="card">
+      <div class="card-label">6. Your Rights</div>
+      <p>You have the right to access, correct, delete (except punishments), and object to your data. Contact us at <a href="mailto:stacik@ctksystem.com">stacik@ctksystem.com</a> to exercise these rights.</p>
+    </div>
 
-  <h2>9. Contact Us</h2>
-  <p>Email: <a href="mailto:stacik@ctksystem.com">stacik@ctksystem.com</a><br>Website: <a href="https://ctksystem.com">ctksystem.com</a><a href="https://discord.gg/yWYXSRXFwR">Discord Server</a></p>
+    <div class="card">
+      <div class="card-label">8. Punishment Data</div>
+      <p>Punishment records are not deleted unless the punishment was issued in error.</p>
+      <p><strong>CTK Blacklist data stored:</strong> IP address, Discord username, email (if registered), reason, date, and moderator. This data cannot be requested for deletion for security reasons.</p>
+      <p><strong>Feature ban data stored:</strong> Discord username, feature removed, reason, date, moderator, and project ID. This may be deleted upon a general data deletion request — attempting to exploit a deletion to bypass an active punishment will result in a CTK Blacklist.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">7. Policy Changes</div>
+      <p>We may update this Privacy Policy at any time and will post changes to this page.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">9. Contact</div>
+      <p>Email: <a href="mailto:stacik@ctksystem.com">stacik@ctksystem.com</a><br>Website: <a href="https://ctksystem.com">ctksystem.com</a> · <a href="https://discord.gg/yWYXSRXFwR">Discord Server</a></p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>&copy; 2025 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
 </body>
 </html>
