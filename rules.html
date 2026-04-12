@@ -1,153 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CTK - Terms of Service</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK Systems — Terms of Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #4b0082, #6c5ce7);
-      background-size: 300% 300%;
-      animation: gradientBG 12s ease infinite;
-      color: #fff;
-      text-align: center;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124,111,255,0.15);
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
     }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 14px; color: var(--text-dim); max-width: 400px; margin: 12px auto 0; }
 
-    h1 {
-      font-size: 2.8rem;
-      margin: 30px 0;
-      letter-spacing: 1px;
-      text-shadow: 0 0 15px rgba(255,255,255,0.3);
-    }
+    .content { max-width: 820px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 12px; }
 
-    h2 {
-      margin-top: 40px;
-      font-size: 2rem;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(124,111,255,0.2); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ol, .card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 18px; }
+    .card li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .card li strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
+    .card a { color: var(--purple); text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
 
-    .card {
-      max-width: 900px;
-      margin: 20px auto;
-      background: rgba(255,255,255,0.08);
-      padding: 25px;
-      border-radius: 15px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .enforcement { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 99px; background: rgba(124,111,255,0.1); border: 1px solid var(--border-accent); color: #a89fff; }
+    .enforcement::before { content: '⚑'; font-size: 10px; }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 25px rgba(0,0,0,0.6);
-    }
+    .defs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
+    .def-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .def-term { font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .def-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    ol {
-      padding-left: 20px;
-    }
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
 
-    li {
-      margin-bottom: 12px;
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
-
-    p {
-      color: #ccc;
-      margin-top: 15px;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      margin: 50px 0 20px;
-      font-size: 0.9rem;
-      color: #aaa;
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      .card { padding: 22px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-  <h1>CTK Terms of Service</h1>
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </header>
 
-  <div class="card">
-    <h2>Introduction</h2>
-    <p>Welcome to CTK! These Terms of Service ("Terms") explain the rules and conditions under which you may use CTK projects and services. By using any CTK project, you agree to these Terms.</p>
-    <p><strong>DEFINITIONS:</strong><br>
-      <strong>PROJECTS</strong> = Any of our work, including but not limited to games, Discord bots, and Python applications.<br>
-      <strong>PUNISHMENTS</strong> = Limitations or penalties applied to a user’s access or privileges.<br>
-      <strong>CTK</strong> = The CTK service, community, and its related systems.</p>
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">Legal</div>
+    <h1>Terms of Service</h1>
+    <p>Last updated: 24 January 2026</p>
+  </section>
+
+  <div class="content">
+
+    <div class="card">
+      <div class="card-label">Introduction</div>
+      <p>Welcome to CTK. These Terms of Service govern the rules and conditions under which you may use CTK projects and services. By using any CTK project, you agree to these Terms.</p>
+      <div class="defs-grid">
+        <div class="def-item"><div class="def-term">Projects</div><div class="def-desc">Any CTK work including games, Discord bots, and Python applications.</div></div>
+        <div class="def-item"><div class="def-term">Punishments</div><div class="def-desc">Limitations or penalties applied to a user's access or privileges.</div></div>
+        <div class="def-item"><div class="def-term">CTK</div><div class="def-desc">The CTK service, community, and its related systems.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section A</div>
+      <h3>Rules</h3>
+      <ol>
+        <li>
+          <strong>Project Integrity</strong>
+          Do not recreate, clone, or remake any CTK projects without explicit permission. This includes "old remakes."
+          <div class="enforcement">Permanent CTK Blacklist + potential DMCA action</div>
+        </li>
+        <li>
+          <strong>Respect and Conduct</strong>
+          CTK promotes a respectful and inclusive environment. Racism, sexism, harassment, or hate speech is strictly prohibited.
+          <div class="enforcement">See Section B (Normal Punishment Scheme)</div>
+        </li>
+        <li>
+          <strong>Support System Usage</strong>
+          Use the support system properly and only for legitimate requests. Abuse or spamming is not tolerated.
+          <div class="enforcement">IP ban from support services</div>
+        </li>
+        <li>
+          <strong>Unauthorized Access</strong>
+          Attempting to gain unauthorized access to CTK servers or data is strictly forbidden. Systems automatically IP ban security threats.
+          <div class="enforcement">CTK Blacklist and/or police report</div>
+        </li>
+        <li>
+          <strong>Exploiting Loopholes</strong>
+          Intentionally exploiting loopholes or technicalities to bypass these Terms will result in the same level of punishment as the intended violation.
+          <div class="enforcement">As applicable per violation</div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section B</div>
+      <h3>Punishment Scheme</h3>
+      <ol>
+        <li>
+          <strong>Warning</strong>
+          A formal CTK warning lasting 30 days or indefinitely. Two active warnings escalate to the next level.
+        </li>
+        <li>
+          <strong>Feature Restriction</strong>
+          Specific features may be removed (e.g., disabling certain bot commands) if they were used in a violation.
+        </li>
+        <li>
+          <strong>Temporary Suspension</strong>
+          Loss of access to CTK projects (excluding partner services) for up to one year.
+        </li>
+        <li>
+          <strong>CTK Blacklist</strong>
+          Permanent loss of access to all CTK projects, including partner projects. Generally final and rarely lifted.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section C</div>
+      <h3>Administrative Abuse & Misconduct</h3>
+      <ol>
+        <li>
+          <strong>Abuse of Administrative Power</strong>
+          CTK staff are strictly prohibited from abusing permissions — including damaging projects, deleting data, or acting in bad faith toward users.
+          <div class="enforcement">Immediate removal + CTK Blacklist + potential legal action</div>
+        </li>
+        <li>
+          <strong>Intentional Project Damage</strong>
+          Any deliberate act designed to disrupt or destroy CTK projects — by staff or non-staff — is a critical violation.
+          <div class="enforcement">Permanent CTK Blacklist + possible civil or criminal action</div>
+        </li>
+        <li>
+          <strong>Accountability & Reporting</strong>
+          CTK may investigate any allegation of misconduct. Users may report suspected abuse through official CTK support channels. False reports may result in punishment.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section D</div>
+      <h3>Data & Privacy</h3>
+      <p>For information about how CTK handles your data, please visit our <a href="https://ctksystem.com/privacy">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section E</div>
+      <h3>Updates to These Terms</h3>
+      <p>CTK may update these Terms of Service at any time without prior notice. Continued use of our projects means you accept the latest version.</p>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h2>Section A: Rules</h2>
-    <ol>
-      <li><strong>Project Integrity:</strong> Do not recreate, clone, or remake any CTK projects without explicit permission. This includes “old remakes.”<br><em>PUNISHMENT:</em> Permanent CTK Blacklist and potential DMCA action if content is directly copied.</li>
-
-      <li><strong>Respect and Conduct:</strong> CTK promotes a respectful and inclusive environment. Racism, sexism, harassment, or any form of hate speech is strictly prohibited.<br><em>PUNISHMENT:</em> See Section B (Normal Punishment Scheme).</li>
-
-      <li><strong>Support System Usage:</strong> Use the support system properly and only for legitimate requests. Abuse or spamming is not tolerated.<br><em>PUNISHMENT:</em> IP ban from support services.</li>
-
-      <li><strong>Unauthorized Access:</strong> Attempting to gain unauthorized access to CTK servers or data is strictly forbidden. Our systems automatically IP ban security threats.<br><em>PUNISHMENT:</em> CTK Blacklist and/or police report.</li>
-
-      <li><strong>Exploiting Loopholes:</strong> Intentionally exploiting loopholes or technicalities to bypass these Terms will result in the same level of punishment as the intended violation.<br><em>PUNISHMENT:</em> As applicable per violation.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>Section B: Punishments</h2>
-    <ol>
-      <li><strong>Warning:</strong> A formal CTK warning that lasts 30 days or indefinitely. Two active warnings escalate to the next punishment level.</li>
-      <li><strong>Feature Restriction:</strong> Specific features may be removed (e.g., disabling certain bot commands) if they were used in a violation.</li>
-      <li><strong>Temporary Suspension:</strong> Loss of access to CTK projects (excluding partner services) for up to one year.</li>
-      <li><strong>CTK Blacklist:</strong> Permanent loss of access to all CTK projects, including partner projects. Blacklists are generally final and rarely lifted.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-  <h2>Section C: Administrative Abuse & Misconduct</h2>
-  <ol>
-    <li>
-      <strong>Abuse of Administrative Power:</strong>
-      CTK administrators, moderators, and staff are strictly prohibited from abusing their permissions. This includes, but is not limited to, intentionally damaging projects, deleting or corrupting data, sabotaging systems, or acting in bad faith toward users or CTK itself.<br>
-      <em>PUNISHMENT:</em> Immediate removal from staff position, permanent CTK Blacklist, and potential legal action depending on severity.
-    </li>
-
-    <li>
-      <strong>Intentional Project Damage:</strong>
-      Any intentional act designed to disrupt, degrade, or destroy CTK projects—whether performed by staff or non-staff—will be treated as a critical violation.<br>
-      <em>PUNISHMENT:</em> Permanent CTK Blacklist and possible civil or criminal action.
-    </li>
-
-    <li>
-      <strong>Accountability & Reporting:</strong>
-      CTK reserves the right to investigate any allegation of administrative misconduct. Users may report suspected abuse through official CTK support channels. False or malicious reports may result in punishment.
-    </li>
-  </ol>
-</div>
-
-
-  <div class="card">
-    <h2>Section D: Data & Privacy</h2>
-    <p>For information about how CTK handles your data, please visit our Privacy Policy at <a href="https://ctksystem.com/privacy" target="_blank">ctksystem.com/privacy</a>.</p>
-  </div>
-
-  <div class="card">
-    <h2>Section E: Updates to These Terms</h2>
-    <p>CTK may update these Terms of Service at any time without prior notice. Continued use of our projects means you accept the latest version of the Terms.</p>
-  </div>
-
-  <h2>Thank you for being part of the CTK community!</h2>
-
-  <footer>© 2025 CTK. All rights reserved. | Last Updated: 24 January 2026</footer>
+  <footer>
+    <span>&copy; 2025 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
 </body>
 </html>
-
