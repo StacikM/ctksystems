@@ -1,195 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CTK Dev - Developer Policies</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK Systems — Developer Policies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #4b0082, #6c5ce7);
-      background-size: 300% 300%;
-      animation: gradientBG 12s ease infinite;
-      color: #fff;
-      text-align: center;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124,111,255,0.15);
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
     }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 14px; color: var(--text-dim); max-width: 400px; margin: 12px auto 0; }
 
-    h1 {
-      font-size: 2.8rem;
-      margin: 30px 0;
-      letter-spacing: 1px;
-      text-shadow: 0 0 15px rgba(255,255,255,0.3);
-    }
+    .content { max-width: 820px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 12px; }
 
-    h2 {
-      margin-top: 40px;
-      font-size: 2rem;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(124,111,255,0.2); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ol, .card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 18px; }
+    .card li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .card li strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
 
-    .card {
-      max-width: 900px;
-      margin: 20px auto;
-      background: rgba(255,255,255,0.08);
-      padding: 25px;
-      border-radius: 15px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      text-align: left;
-    }
+    .enforcement { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 99px; background: rgba(124,111,255,0.1); border: 1px solid var(--border-accent); color: #a89fff; }
+    .enforcement::before { content: '⚑'; font-size: 10px; }
 
-    ol {
-      padding-left: 20px;
-    }
+    .defs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 14px; }
+    .def-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .def-term { font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .def-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-    li {
-      margin-bottom: 12px;
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
 
-    p {
-      color: #ccc;
-      margin-top: 15px;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      margin: 50px 0 20px;
-      font-size: 0.9rem;
-      color: #aaa;
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      .card { padding: 22px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </header>
 
-<h1>CTK Developer Policies</h1>
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">Developer</div>
+    <h1>Developer Policies</h1>
+    <p>Last updated: 29 January 2026</p>
+  </section>
 
-<div class="card">
-  <h2>Introduction</h2>
-  <p>
-    These Developer Policies ("Policies") govern how CTK SDKs, libraries, APIs, and developer tools may be used.
-    By integrating, distributing, or executing any CTK-provided code, you agree to comply with these Policies.
-  </p>
+  <div class="content">
 
-  <p><strong>DEFINITIONS:</strong><br>
-    <strong>CTK SDK / Libraries</strong> = Any official CTK-distributed code, binaries, APIs, or tooling.<br>
-    <strong>Developer Content</strong> = Any application, service, or project that uses CTK SDKs or libraries.<br>
-    <strong>Enforcement Code</strong> = Logic executed by CTK systems that restricts or disables access based on policy violations.<br>
-    <strong>CTK Blacklist</strong> = A permanent or temporary restriction applied to users, accounts, IPs, or environments.
-  </p>
-</div>
+    <div class="card">
+      <div class="card-label">Introduction</div>
+      <p>These Developer Policies govern how CTK SDKs, libraries, APIs, and developer tools may be used. By integrating, distributing, or executing any CTK-provided code, you agree to comply with these Policies.</p>
+      <div class="defs-grid">
+        <div class="def-item"><div class="def-term">CTK SDK / Libraries</div><div class="def-desc">Any official CTK-distributed code, binaries, APIs, or tooling.</div></div>
+        <div class="def-item"><div class="def-term">Developer Content</div><div class="def-desc">Any application or project that uses CTK SDKs or libraries.</div></div>
+        <div class="def-item"><div class="def-term">Enforcement Code</div><div class="def-desc">Logic that restricts or disables access based on policy violations.</div></div>
+        <div class="def-item"><div class="def-term">CTK Blacklist</div><div class="def-desc">A permanent or temporary restriction applied to users, accounts, or IPs.</div></div>
+      </div>
+    </div>
 
-<div class="card">
-  <h2>Section A: Acceptable SDK & Library Usage</h2>
-  <ol>
-    <li>
-      <strong>Authorized Use Only:</strong>
-      CTK SDKs and libraries may only be used in accordance with their documented purpose. Reverse engineering,
-      deobfuscation, or bypassing built-in safeguards is prohibited.<br>
-      <em>ENFORCEMENT:</em> Immediate revocation of SDK access and CTK Blacklist.
-    </li>
+    <div class="card">
+      <div class="card-label">Section A</div>
+      <h3>Acceptable SDK & Library Usage</h3>
+      <ol>
+        <li>
+          <strong>Authorized Use Only</strong>
+          CTK SDKs may only be used in accordance with their documented purpose. Reverse engineering, deobfuscation, or bypassing built-in safeguards is prohibited.
+          <div class="enforcement">Immediate SDK revocation + CTK Blacklist</div>
+        </li>
+        <li>
+          <strong>No Repackaging or Redistribution</strong>
+          You may not repackage, resell, sublicense, or redistribute CTK SDKs without explicit written authorization.
+          <div class="enforcement">Permanent CTK Blacklist + potential legal action</div>
+        </li>
+        <li>
+          <strong>Content Responsibility</strong>
+          Developers are solely responsible for applications built using CTK tools. CTK may restrict SDK functionality if used to distribute harmful or illegal content.
+          <div class="enforcement">Feature restriction or full SDK disablement</div>
+        </li>
+        <li>
+          <strong>Security & Integrity</strong>
+          Attempts to interfere with CTK infrastructure, authentication, telemetry, or enforcement mechanisms are strictly prohibited.
+          <div class="enforcement">Automatic enforcement triggers + IP blocking + CTK Blacklist</div>
+        </li>
+      </ol>
+    </div>
 
-    <li>
-      <strong>No Repackaging or Redistribution:</strong>
-      You may not repackage, resell, sublicense, or redistribute CTK SDKs or libraries without explicit written authorization.<br>
-      <em>ENFORCEMENT:</em> Permanent CTK Blacklist and potential legal action.
-    </li>
+    <div class="card">
+      <div class="card-label">Section B</div>
+      <h3>Blacklisting & Runtime Enforcement</h3>
+      <ol>
+        <li>
+          <strong>Execution-Level Restrictions</strong>
+          CTK reserves the right to execute server-side or client-side enforcement code that may limit, disable, or fully block functionality for blacklisted users or environments.
+        </li>
+        <li>
+          <strong>No Circumvention</strong>
+          Any attempt to bypass CTK enforcement logic, blacklist checks, or license validation is a severe violation.
+          <div class="enforcement">Permanent CTK Blacklist</div>
+        </li>
+        <li>
+          <strong>Propagation of Restrictions</strong>
+          Blacklist status may apply across all CTK services, SDKs, and partner integrations. Enforcement may occur automatically without prior notice.
+        </li>
+        <li>
+          <strong>Finality</strong>
+          Blacklist decisions are generally final. CTK is not obligated to provide appeals, explanations, or reinstatement.
+        </li>
+      </ol>
+    </div>
 
-    <li>
-      <strong>Content Responsibility:</strong>
-      Developers are solely responsible for the content and behavior of applications built using CTK tools.
-      CTK may restrict or disable SDK functionality if used to distribute harmful, abusive, or illegal content.<br>
-      <em>ENFORCEMENT:</em> Feature restriction or full SDK disablement.
-    </li>
+    <div class="card">
+      <div class="card-label">Section C</div>
+      <h3>Developer & Administrative Misconduct</h3>
+      <ol>
+        <li>
+          <strong>Abuse of Privileged Access</strong>
+          Developers or administrators with elevated access may not misuse credentials, keys, or permissions to alter CTK systems or harm other developers.
+          <div class="enforcement">Immediate access revocation + CTK Blacklist + potential legal action</div>
+        </li>
+        <li>
+          <strong>Intentional System Damage</strong>
+          Any deliberate attempt to disrupt, degrade, or destroy CTK services or SDK functionality is a critical violation.
+          <div class="enforcement">Permanent CTK Blacklist + possible civil or criminal escalation</div>
+        </li>
+      </ol>
+    </div>
 
-    <li>
-      <strong>Security & Integrity:</strong>
-      Attempts to interfere with CTK infrastructure, authentication systems, telemetry, or enforcement mechanisms
-      are strictly prohibited.<br>
-      <em>ENFORCEMENT:</em> Automatic enforcement triggers, IP blocking, and CTK Blacklist.
-    </li>
-  </ol>
-</div>
+    <div class="card">
+      <div class="card-label">Section D</div>
+      <h3>Telemetry, Monitoring & Privacy</h3>
+      <p>CTK SDKs may collect limited telemetry required for security, enforcement, and stability. Use of CTK tools constitutes consent to this monitoring as outlined in our Privacy Policy.</p>
+    </div>
 
-<div class="card">
-  <h2>Section B: Blacklisting & Runtime Enforcement</h2>
-  <ol>
-    <li>
-      <strong>Execution-Level Restrictions:</strong>
-      CTK reserves the right to execute server-side or client-side enforcement code that may limit,
-      disable, or fully block functionality for blacklisted users or environments.
-    </li>
+    <div class="card">
+      <div class="card-label">Section E</div>
+      <h3>Policy Updates</h3>
+      <p>CTK may update these Developer Policies at any time. Continued use of CTK SDKs or libraries after an update constitutes acceptance of the revised Policies.</p>
+    </div>
 
-    <li>
-      <strong>No Circumvention:</strong>
-      Any attempt to bypass CTK enforcement logic, blacklist checks, license validation,
-      or access controls will be treated as a severe violation.<br>
-      <em>ENFORCEMENT:</em> Permanent CTK Blacklist.
-    </li>
+  </div>
 
-    <li>
-      <strong>Propagation of Restrictions:</strong>
-      Blacklist status may apply across all CTK services, SDKs, libraries, and partner integrations.
-      Enforcement may occur automatically without prior notice.
-    </li>
-
-    <li>
-      <strong>Finality:</strong>
-      Blacklist decisions are generally final. CTK is not obligated to provide appeals,
-      explanations, or reinstatement.
-    </li>
-  </ol>
-</div>
-
-<div class="card">
-  <h2>Section C: Developer & Administrative Misconduct</h2>
-  <ol>
-    <li>
-      <strong>Abuse of Privileged Access:</strong>
-      Developers or administrators with elevated access may not misuse credentials,
-      keys, or permissions to alter CTK systems or harm other developers.<br>
-      <em>ENFORCEMENT:</em> Immediate access revocation, CTK Blacklist, and potential legal action.
-    </li>
-
-    <li>
-      <strong>Intentional System Damage:</strong>
-      Any deliberate attempt to disrupt, degrade, or destroy CTK services or SDK functionality
-      will be treated as a critical violation.<br>
-      <em>ENFORCEMENT:</em> Permanent CTK Blacklist and possible civil or criminal escalation.
-    </li>
-  </ol>
-</div>
-
-<div class="card">
-  <h2>Section D: Telemetry, Monitoring & Privacy</h2>
-  <p>
-    CTK SDKs may collect limited telemetry required for security, enforcement, and stability purposes.
-    Use of CTK tools constitutes consent to this monitoring as outlined in our Privacy Policy.
-  </p>
-</div>
-
-<div class="card">
-  <h2>Section E: Policy Updates</h2>
-  <p>
-    CTK may update these Developer Policies at any time. Continued use of CTK SDKs or libraries
-    after an update constitutes acceptance of the revised Policies.
-  </p>
-</div>
-
-<h2>Build responsibly. Abuse nothing.</h2>
-
-<footer>
-  © 2025 CTK. All rights reserved. | Last Updated: 29 January 2026
-</footer>
-
+  <footer>
+    <span>&copy; 2025 CTK System. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
 </body>
 </html>
