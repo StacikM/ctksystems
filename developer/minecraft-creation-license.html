@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTK Systems — Minecraft Creation License</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124,111,255,0.15);
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; object-fit: cover; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 14px; color: var(--text-dim); max-width: 520px; margin: 12px auto 0; line-height: 1.6; }
+
+    .content { max-width: 820px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(124,111,255,0.2); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ol, .card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 18px; }
+    .card li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .card li strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
+
+    .enforcement { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 99px; background: rgba(124,111,255,0.1); border: 1px solid var(--border-accent); color: #a89fff; }
+    .enforcement::before { content: '⚑'; font-size: 10px; }
+
+    .defs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 14px; }
+    .def-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .def-term { font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .def-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    .notice { border-color: rgba(124,111,255,0.3); background: linear-gradient(180deg, rgba(124,111,255,0.08), rgba(15,15,26,1)); }
+    .warning { border-color: rgba(255,120,120,0.25); }
+    .warning .card-label { color: #ff8f8f; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      .card { padding: 22px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo"><img class="logo-mark" src="ctklogoblack.png" alt="CTK logo">CTK Systems</a>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-glow"></div>
+    <div class="page-label">License</div>
+    <h1>Minecraft Creation License</h1>
+    <p>Last updated: 26 April 2026<br>For CTK Minecraft mods, plugins, datapacks, resource packs, configurations, builds, assets, and related files.</p>
+  </section>
+
+  <div class="content">
+
+    <div class="card notice">
+      <div class="card-label">Summary</div>
+      <h3>Use is allowed. Reuploading is not.</h3>
+      <p>You may use CTK Minecraft creations in your own servers, modpacks, videos, streams, screenshots, private projects, and personal gameplay without giving credit. Credit is appreciated, but not required.</p>
+      <p>You may not reupload, redistribute, mirror, resell, leak, sublicense, or publish CTK creations anywhere without written permission from CTK.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Definitions</div>
+      <p>For this License, the following meanings apply:</p>
+      <div class="defs-grid">
+        <div class="def-item"><div class="def-term">CTK Creation</div><div class="def-desc">Any Minecraft mod, plugin, datapack, resource pack, build, asset, configuration, file, archive, source code, or binary released by CTK.</div></div>
+        <div class="def-item"><div class="def-term">Use</div><div class="def-desc">Installing, running, playing with, modifying privately, recording, streaming, or using the creation on a server.</div></div>
+        <div class="def-item"><div class="def-term">Redistribution</div><div class="def-desc">Uploading, sharing, mirroring, reposting, reselling, leaking, or making the creation available for download by others.</div></div>
+        <div class="def-item"><div class="def-term">Paid Asset</div><div class="def-desc">Any CTK Creation that was sold, licensed commercially, locked behind payment, or otherwise provided as paid content.</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section A</div>
+      <h3>Permissions</h3>
+      <ol>
+        <li>
+          <strong>Personal and Server Use</strong>
+          You may install and use CTK Creations for personal gameplay, private projects, public Minecraft servers, and internal server setups.
+        </li>
+        <li>
+          <strong>No Credit Required</strong>
+          You do not need to credit CTK when using CTK Creations in gameplay, videos, screenshots, streams, servers, or private projects.
+        </li>
+        <li>
+          <strong>Private Changes Allowed</strong>
+          You may edit, configure, patch, or modify CTK Creations for your own private use, provided you do not redistribute the modified version.
+        </li>
+        <li>
+          <strong>Content Creation Allowed</strong>
+          You may show CTK Creations in videos, livestreams, reviews, screenshots, and social media posts, as long as you do not provide unauthorized download links or copies.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card warning">
+      <div class="card-label">Section B</div>
+      <h3>Strict Redistribution Ban</h3>
+      <ol>
+        <li>
+          <strong>No Reuploads</strong>
+          You may not upload, repost, mirror, leak, archive, or redistribute CTK Creations on any website, marketplace, Discord server, file host, GitHub repository, forum, mod platform, or server panel without written permission from CTK.
+          <div class="enforcement">Download removal request + access restriction + possible legal action</div>
+        </li>
+        <li>
+          <strong>No Paid Redistribution</strong>
+          You may not sell, rent, license, monetize, paywall, bundle, or otherwise charge money for access to CTK Creations unless CTK gives written permission.
+          <div class="enforcement">Permanent license termination + takedown request + possible legal action</div>
+        </li>
+        <li>
+          <strong>No Modpack Redistribution Without Permission</strong>
+          You may use CTK Creations in a modpack or server setup for your own server, but you may not distribute a modpack, setup archive, server files package, or installer containing CTK Creations without written permission.
+        </li>
+        <li>
+          <strong>No Modified Reuploads</strong>
+          Changing names, icons, package names, code, configs, metadata, or file structure does not make redistribution allowed. Modified copies are still covered by this License.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card warning">
+      <div class="card-label">Section C</div>
+      <h3>Paid Assets and Leaks</h3>
+      <ol>
+        <li>
+          <strong>Paid Assets Must Not Be Shared</strong>
+          If a CTK Creation was paid content, you may not give it away, leak it, trade it, upload it, include it in public downloads, or share it with users who did not obtain it from CTK or an authorized CTK source.
+          <div class="enforcement">License termination + platform report + takedown request + possible civil claim</div>
+        </li>
+        <li>
+          <strong>Commercial Misuse</strong>
+          Reselling or monetizing a paid CTK Creation without permission may be treated as copyright infringement, breach of license, and unauthorized commercial distribution.
+          <div class="enforcement">Payment platform report + marketplace removal + possible legal escalation</div>
+        </li>
+        <li>
+          <strong>Access Does Not Transfer Ownership</strong>
+          Buying, downloading, receiving, or using a CTK Creation gives you permission to use it under this License. It does not transfer copyright, ownership, resale rights, or redistribution rights.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section D</div>
+      <h3>Ownership and Copyright</h3>
+      <p>All CTK Creations are protected by copyright and remain the property of CTK unless otherwise stated in writing. CTK reserves all rights not expressly granted by this License.</p>
+      <p>This License does not grant rights to CTK names, logos, branding, private source code, private systems, or unreleased materials.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section E</div>
+      <h3>Enforcement</h3>
+      <ol>
+        <li>
+          <strong>Takedown Requests</strong>
+          CTK may request removal of unauthorized copies from websites, marketplaces, file hosts, Discord servers, GitHub repositories, forums, search engines, and other platforms.
+        </li>
+        <li>
+          <strong>License Termination</strong>
+          CTK may terminate your permission to use CTK Creations if you violate this License.
+        </li>
+        <li>
+          <strong>Account, Server, or Service Restrictions</strong>
+          CTK may restrict access to CTK downloads, updates, support, services, licensing systems, or communities for users involved in unauthorized redistribution.
+        </li>
+        <li>
+          <strong>Legal Escalation</strong>
+          Serious violations, especially paid redistribution or leaking of paid assets, may result in copyright claims, civil legal action, payment processor reports, marketplace reports, or other remedies available under applicable law.
+        </li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section F</div>
+      <h3>Permission Requests</h3>
+      <p>To request redistribution, commercial use, modpack inclusion, marketplace publication, or any special permission, contact CTK and describe exactly what you want to do, where the files will be hosted, whether money is involved, and which CTK Creation is affected.</p>
+      <p>Permission is only valid when CTK gives written approval. Silence, lack of reply, or previous access to a file does not count as permission.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section G</div>
+      <h3>Disclaimer</h3>
+      <p>CTK Creations are provided as-is unless otherwise stated. CTK is not responsible for server issues, compatibility problems, data loss, downtime, conflicts with other mods or plugins, or damage caused by improper installation or unauthorized modifications.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Section H</div>
+      <h3>Updates</h3>
+      <p>CTK may update this License at any time. Continued use of CTK Creations after an update means you accept the revised License.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>&copy; 2026 CTK. All rights reserved.</span>
+    <nav>
+      <a href="/faq">FAQ</a>
+      <a href="/rules">Rules</a>
+      <a href="/services.html">Services</a>
+    </nav>
+  </footer>
+</body>
+</html>
