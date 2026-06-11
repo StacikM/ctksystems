@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTK Dev | Main Page</title>
+    <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #7c6fff; --purple-dark: #5a4fcf;
+      --purple-glow: rgba(124,111,255,0.15);
+      --bg: #09090f; --bg-card: #0f0f1a;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(124,111,255,0.35);
+      --text: #f0eefc; --text-muted: #888899; --text-dim: #555566;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    header { position: sticky; top: 0; z-index: 100; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: rgba(9,9,15,0.85); backdrop-filter: blur(20px); }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-mark { width: 28px; height: 28px; background: var(--purple); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .page-hero { padding: 80px 40px 64px; text-align: center; position: relative; overflow: hidden; }
+    .page-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(124,111,255,0.1) 0%, transparent 70%); pointer-events: none; }
+    .page-label { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 99px; border: 1px solid var(--border-accent); background: rgba(124,111,255,0.08); color: #a89fff; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.1; background: linear-gradient(135deg, #ffffff 30%, #9b8fff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { font-size: 14px; color: var(--text-dim); max-width: 400px; margin: 12px auto 0; }
+
+    .content { max-width: 820px; margin: 0 auto; padding: 12px 40px 80px; width: 100%; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(124,111,255,0.2); }
+    .card-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .card h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 14px; }
+    .card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ol, .card ul { padding-left: 18px; display: flex; flex-direction: column; gap: 18px; }
+    .card li { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .card li strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 3px; }
+
+    .enforcement { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; padding: 3px 10px; border-radius: 99px; background: rgba(124,111,255,0.1); border: 1px solid var(--border-accent); color: #a89fff; }
+    .enforcement::before { content: '⚑'; font-size: 10px; }
+
+    .defs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 14px; }
+    .def-item { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .def-term { font-size: 12px; font-weight: 700; color: var(--purple); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .def-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer span { font-size: 13px; color: var(--text-dim); }
+    footer nav a { font-size: 13px; padding: 4px 10px; }
+
+    @media (max-width: 600px) {
+      header { padding: 0 20px; }
+      .page-hero { padding: 60px 20px 40px; }
+      .content { padding: 12px 20px 60px; }
+      .card { padding: 22px 20px; }
+      footer { padding: 20px; flex-direction: column; align-items: flex-start; }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo"><img class="logo-mark" src="/ctklogoblack.png">CTK Systems</a>
+        <nav>
+        <a href="/faq">FAQ</a>
+        <a href="/rules">Rules</a>
+        <a href="/services.html">Services</a>
+        </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-glow">hi</div>
+    <div class="page-label">dev index</div>
+    <h1>Developer Index</h1>
+  </section>
+  <main class="content">
+    <div class="card">
+        <div class="card-label">Info</div>
+        <h3>Welcome to CTK Developers,</h3>
+        <p>This is the index.html of the directory developer/ which is about developer docs and information</p>
+    </div>
+    <div class="card">
+        <div class="card-label">Routes</div>
+        <h3>Documentation and Licenses</h3>
+        <p><a href="minecraft-creation-license.html">minecraft-creation-license.html</a> - Defines your rights to use CTK Minecraft Content</p>
+        <p><a href="tos.html">tos.html</a> - The Developer TOS, and how you can use it</p>
+    </div>
+  </main>
+</body>
+</html>
